@@ -2,18 +2,25 @@
 // Handles business logic for user operations
 
 const User = require('../models/User');
+const Logger = require('../utils/logger');
+
+const logger = new Logger('UserController');
 
 // Get all users
-const getAllUsers = (req, res) => {
+const getAllUsers = async (req, res) => {
   try {
-    // TODO: Fetch users from database
-    // const users = await User.findAll();
+    const users = await User.findAll({
+      attributes: { exclude: ['password'] }
+    });
+    
+    logger.info(`Retrieved ${users.length} users`);
     res.json({
       success: true,
       message: 'Users retrieved successfully',
-      data: []
+      data: users
     });
   } catch (error) {
+    logger.error('Error fetching users', error);
     res.status(500).json({
       success: false,
       message: 'Error fetching users',
@@ -23,18 +30,28 @@ const getAllUsers = (req, res) => {
 };
 
 // Get single user by ID
-const getUserById = (req, res) => {
+const getUserById = async (req, res) => {
   try {
     const { id } = req.params;
-    // TODO: Fetch user from database by ID
-    // const user = await User.findById(id);
+    const user = await User.findByPk(id, {
+      attributes: { exclude: ['password'] }
+    });
     
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: 'User not found'
+      });
+    }
+    
+    logger.info(`Retrieved user: ${id}`);
     res.json({
       success: true,
       message: 'User retrieved successfully',
-      data: null
+      data: user
     });
   } catch (error) {
+    logger.error('Error fetching user', error);
     res.status(500).json({
       success: false,
       message: 'Error fetching user',
@@ -44,20 +61,40 @@ const getUserById = (req, res) => {
 };
 
 // Create new user
-const createUser = (req, res) => {
+const createUser = async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, phone, role } = req.body;
     
-    // TODO: Validate input and create user in database
-    // const newUser = new User(null, name, email, password);
-    // await newUser.save();
+    // Check if user already exists
+    const existingUser = await User.findOne({ where: { email } });
+    if (existingUser) {
+      return res.status(400).json({
+        success: false,
+        message: 'Email already registered'
+      });
+    }
     
+    const newUser = await User.create({
+      name,
+      email,
+      password,
+      phone,
+      role: role || 'user'
+    });
+    
+    logger.success(`New user created: ${newUser.id} (${email})`);
     res.status(201).json({
       success: true,
       message: 'User created successfully',
-      data: null
+      data: {
+        id: newUser.id,
+        name: newUser.name,
+        email: newUser.email,
+        role: newUser.role
+      }
     });
   } catch (error) {
+    logger.error('Error creating user', error);
     res.status(500).json({
       success: false,
       message: 'Error creating user',
@@ -67,21 +104,39 @@ const createUser = (req, res) => {
 };
 
 // Update user
-const updateUser = (req, res) => {
+const updateUser = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, email } = req.body;
+    const { name, email, phone, role } = req.body;
     
-    // TODO: Update user in database
-    // const user = await User.findById(id);
-    // if (user) { user.name = name; user.email = email; await user.save(); }
+    const user = await User.findByPk(id);
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: 'User not found'
+      });
+    }
     
+    await user.update({
+      name: name || user.name,
+      email: email || user.email,
+      phone: phone || user.phone,
+      role: role || user.role
+    });
+    
+    logger.info(`User updated: ${id}`);
     res.json({
       success: true,
       message: 'User updated successfully',
-      data: null
+      data: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role
+      }
     });
   } catch (error) {
+    logger.error('Error updating user', error);
     res.status(500).json({
       success: false,
       message: 'Error updating user',
@@ -91,18 +146,27 @@ const updateUser = (req, res) => {
 };
 
 // Delete user
-const deleteUser = (req, res) => {
+const deleteUser = async (req, res) => {
   try {
     const { id } = req.params;
     
-    // TODO: Delete user from database
-    // await User.delete(id);
+    const user = await User.findByPk(id);
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: 'User not found'
+      });
+    }
     
+    await user.destroy();
+    
+    logger.info(`User deleted: ${id}`);
     res.json({
       success: true,
       message: 'User deleted successfully'
     });
   } catch (error) {
+    logger.error('Error deleting user', error);
     res.status(500).json({
       success: false,
       message: 'Error deleting user',

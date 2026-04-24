@@ -1,9 +1,12 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const Logger = require('./utils/logger');
 const errorHandler = require('./middleware/errorHandler');
 const routes = require('./routes');
+const { sequelize, testConnection, syncDatabase } = require('./config/sequelize');
 
+const logger = new Logger('Server');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
@@ -40,15 +43,39 @@ app.use((req, res) => {
 // Error handler middleware (must be last)
 app.use(errorHandler);
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`✓ Server running on http://localhost:${PORT}`);
-  console.log(`✓ Environment: ${process.env.NODE_ENV || 'development'}`);
-  console.log(`✓ Available endpoints:`);
-  console.log(`  - GET  /`);
-  console.log(`  - GET  /api/health`);
-  console.log(`  - GET  /api/users`);
-  console.log(`  - POST /api/users`);
-});
+// Initialize database and start server
+const startServer = async () => {
+  try {
+    // Test database connection
+    const connected = await testConnection();
+    if (!connected) {
+      logger.warn('Database connection failed, proceeding without database');
+    }
+
+    // Sync database models
+    if (connected) {
+      await syncDatabase();
+    }
+
+    // Start server
+    app.listen(PORT, () => {
+      logger.success(`Server running on http://localhost:${PORT}`);
+      logger.info(`Environment: ${process.env.NODE_ENV || 'development'}`);
+      logger.info('Available endpoints:');
+      logger.info('  - GET  /');
+      logger.info('  - GET  /api/health');
+      logger.info('  - GET  /api/users');
+      logger.info('  - GET  /api/users/:id');
+      logger.info('  - POST /api/users');
+      logger.info('  - PUT  /api/users/:id');
+      logger.info('  - DELETE /api/users/:id');
+    });
+  } catch (error) {
+    logger.error('Failed to start server', error);
+    process.exit(1);
+  }
+};
+
+startServer();
 
 module.exports = app;

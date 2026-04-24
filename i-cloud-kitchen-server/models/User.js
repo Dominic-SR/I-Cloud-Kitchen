@@ -1,22 +1,58 @@
-// User Model
-// Defines the User data structure
+// User Model (Sequelize)
+// Defines the User table schema
 
-class User {
-  constructor(id, name, email, password, createdAt = new Date()) {
-    this.id = id;
-    this.name = name;
-    this.email = email;
-    this.password = password;
-    this.createdAt = createdAt;
+const { DataTypes } = require('sequelize');
+const { sequelize } = require('../config/sequelize');
+
+const User = sequelize.define('User', {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  name: {
+    type: DataTypes.STRING(255),
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+      len: [2, 255]
+    }
+  },
+  email: {
+    type: DataTypes.STRING(255),
+    allowNull: false,
+    unique: true,
+    validate: {
+      isEmail: true
+    }
+  },
+  password: {
+    type: DataTypes.STRING(255),
+    allowNull: false
+  },
+  phone: {
+    type: DataTypes.STRING(20),
+    allowNull: true
+  },
+  role: {
+    type: DataTypes.ENUM('admin', 'user', 'chef'),
+    defaultValue: 'user'
+  },
+  isActive: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: true
+  },
+  createdAt: {
+    type: DataTypes.DATE,
+    defaultValue: DataTypes.NOW
+  },
+  updatedAt: {
+    type: DataTypes.DATE,
+    defaultValue: DataTypes.NOW
   }
-
-  // TODO: Add database query methods
-  // Example:
-  // static async findById(id) { }
-  // static async findAll() { }
-  // async save() { }
-  // async update() { }
-  // async delete() { }
-}
+}, {
+  tableName: 'users',
+  timestamps: true
+});
 
 module.exports = User;
