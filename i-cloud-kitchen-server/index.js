@@ -4,7 +4,7 @@ const cors = require('cors');
 const Logger = require('./utils/logger');
 const errorHandler = require('./middleware/errorHandler');
 const routes = require('./routes');
-const { sequelize, testConnection, syncDatabase } = require('./config/sequelize');
+const { sequelize, createDatabaseIfNotExists, testConnection, syncDatabase } = require('./config/sequelize');
 
 const logger = new Logger('Server');
 const app = express();
@@ -46,6 +46,8 @@ app.use(errorHandler);
 // Initialize database and start server
 const startServer = async () => {
   try {
+    await createDatabaseIfNotExists();
+
     // Test database connection
     const connected = await testConnection();
     if (!connected) {

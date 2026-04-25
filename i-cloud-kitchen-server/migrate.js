@@ -1,6 +1,6 @@
 // CLI Migration Commands
 
-const { sequelize } = require('./config/sequelize');
+const { sequelize, createDatabaseIfNotExists } = require('./config/sequelize');
 const MigrationRunner = require('./migrations/migrationRunner');
 
 const runner = new MigrationRunner(sequelize);
@@ -9,6 +9,8 @@ const command = process.argv[2];
 
 async function execute() {
   try {
+    await createDatabaseIfNotExists();
+
     if (command === 'up' || command === 'migrate') {
       await runner.runUp();
       process.exit(0);
