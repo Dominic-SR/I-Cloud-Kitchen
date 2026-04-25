@@ -1,0 +1,268 @@
+[2026-04-25T17:25:30.678Z] [DEBUG] [Database] Executing (default): SELECT 1+1 AS result
+================================================================================
+[2026-04-25T17:25:30.685Z] [SUCCESS] [Database] Database connection successful
+================================================================================
+[2026-04-25T17:25:30.692Z] [DEBUG] [Database] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='users';
+================================================================================
+[2026-04-25T17:25:30.699Z] [DEBUG] [Database] Executing (default): PRAGMA TABLE_INFO(`users`);
+================================================================================
+[2026-04-25T17:25:30.702Z] [DEBUG] [Database] Executing (default): PRAGMA foreign_key_list(`users`)
+================================================================================
+[2026-04-25T17:25:30.705Z] [DEBUG] [Database] Executing (default): PRAGMA INDEX_LIST(`users`)
+================================================================================
+[2026-04-25T17:25:30.709Z] [DEBUG] [Database] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_users_1`)
+================================================================================
+[2026-04-25T17:25:30.712Z] [DEBUG] [Database] Executing (default): PRAGMA foreign_key_list(`users`)
+================================================================================
+[2026-04-25T17:25:30.716Z] [DEBUG] [Database] Executing (default): PRAGMA TABLE_INFO(`users`);
+================================================================================
+[2026-04-25T17:25:30.720Z] [DEBUG] [Database] Executing (default): PRAGMA INDEX_LIST(`users`)
+================================================================================
+[2026-04-25T17:25:30.725Z] [DEBUG] [Database] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_users_1`)
+================================================================================
+[2026-04-25T17:25:30.730Z] [DEBUG] [Database] Executing (default): PRAGMA foreign_key_list(`users`)
+================================================================================
+[2026-04-25T17:25:30.737Z] [DEBUG] [Database] Executing (default): CREATE TABLE IF NOT EXISTS `users_backup` (`id` INTEGER PRIMARY KEY, `name` VARCHAR(255) NOT NULL, `email` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `phone` VARCHAR(20), `role` TEXT DEFAULT 'user', `isActive` TINYINT(1) DEFAULT 1, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL);
+================================================================================
+[2026-04-25T17:25:30.745Z] [DEBUG] [Database] Executing (default): INSERT INTO `users_backup` SELECT `id`, `name`, `email`, `password`, `phone`, `role`, `isActive`, `createdAt`, `updatedAt` FROM `users`;
+================================================================================
+[2026-04-25T17:25:30.748Z] [DEBUG] [Database] Executing (default): DROP TABLE `users`;
+================================================================================
+[2026-04-25T17:25:30.756Z] [DEBUG] [Database] Executing (default): CREATE TABLE IF NOT EXISTS `users` (`id` INTEGER PRIMARY KEY, `name` VARCHAR(255) NOT NULL, `email` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `phone` VARCHAR(20), `role` TEXT DEFAULT 'user', `isActive` TINYINT(1) DEFAULT 1, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL);
+================================================================================
+[2026-04-25T17:25:30.762Z] [DEBUG] [Database] Executing (default): INSERT INTO `users` SELECT `id`, `name`, `email`, `password`, `phone`, `role`, `isActive`, `createdAt`, `updatedAt` FROM `users_backup`;
+================================================================================
+[2026-04-25T17:25:30.764Z] [DEBUG] [Database] Executing (default): DROP TABLE `users_backup`;
+================================================================================
+[2026-04-25T17:25:30.769Z] [DEBUG] [Database] Executing (default): PRAGMA TABLE_INFO(`users`);
+================================================================================
+[2026-04-25T17:25:30.771Z] [DEBUG] [Database] Executing (default): PRAGMA INDEX_LIST(`users`)
+================================================================================
+[2026-04-25T17:25:30.772Z] [DEBUG] [Database] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_users_1`)
+================================================================================
+[2026-04-25T17:25:30.774Z] [DEBUG] [Database] Executing (default): PRAGMA foreign_key_list(`users`)
+================================================================================
+[2026-04-25T17:25:30.775Z] [DEBUG] [Database] Executing (default): CREATE TABLE IF NOT EXISTS `users_backup` (`id` INTEGER PRIMARY KEY, `name` VARCHAR(255) NOT NULL, `email` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `phone` VARCHAR(20), `role` TEXT DEFAULT 'user', `isActive` TINYINT(1) DEFAULT 1, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL);
+================================================================================
+[2026-04-25T17:25:30.784Z] [DEBUG] [Database] Executing (default): INSERT INTO `users_backup` SELECT `id`, `name`, `email`, `password`, `phone`, `role`, `isActive`, `createdAt`, `updatedAt` FROM `users`;
+================================================================================
+[2026-04-25T17:25:30.785Z] [DEBUG] [Database] Executing (default): DROP TABLE `users`;
+================================================================================
+[2026-04-25T17:25:30.789Z] [DEBUG] [Database] Executing (default): CREATE TABLE IF NOT EXISTS `users` (`id` INTEGER PRIMARY KEY, `name` VARCHAR(255) NOT NULL, `email` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `phone` VARCHAR(20), `role` TEXT DEFAULT 'user', `isActive` TINYINT(1) DEFAULT 1, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL);
+================================================================================
+[2026-04-25T17:25:30.794Z] [DEBUG] [Database] Executing (default): INSERT INTO `users` SELECT `id`, `name`, `email`, `password`, `phone`, `role`, `isActive`, `createdAt`, `updatedAt` FROM `users_backup`;
+================================================================================
+[2026-04-25T17:25:30.796Z] [DEBUG] [Database] Executing (default): DROP TABLE `users_backup`;
+================================================================================
+[2026-04-25T17:25:30.801Z] [DEBUG] [Database] Executing (default): PRAGMA TABLE_INFO(`users`);
+================================================================================
+[2026-04-25T17:25:30.802Z] [DEBUG] [Database] Executing (default): PRAGMA INDEX_LIST(`users`)
+================================================================================
+[2026-04-25T17:25:30.803Z] [DEBUG] [Database] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_users_1`)
+================================================================================
+[2026-04-25T17:25:30.805Z] [DEBUG] [Database] Executing (default): PRAGMA foreign_key_list(`users`)
+================================================================================
+[2026-04-25T17:25:30.806Z] [DEBUG] [Database] Executing (default): CREATE TABLE IF NOT EXISTS `users_backup` (`id` INTEGER PRIMARY KEY, `name` VARCHAR(255) NOT NULL, `email` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `phone` VARCHAR(20), `role` TEXT DEFAULT 'user', `isActive` TINYINT(1) DEFAULT 1, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL);
+================================================================================
+[2026-04-25T17:25:31.577Z] [DEBUG] [Database] Executing (default): SELECT 1+1 AS result
+================================================================================
+[2026-04-25T17:25:31.581Z] [SUCCESS] [Database] Database connection successful
+================================================================================
+[2026-04-25T17:25:31.587Z] [DEBUG] [Database] Executing (default): SELECT name FROM sqlite_master WHERE type='table' AND name='users';
+================================================================================
+[2026-04-25T17:25:31.592Z] [DEBUG] [Database] Executing (default): PRAGMA TABLE_INFO(`users`);
+================================================================================
+[2026-04-25T17:25:31.593Z] [DEBUG] [Database] Executing (default): PRAGMA foreign_key_list(`users`)
+================================================================================
+[2026-04-25T17:25:31.596Z] [DEBUG] [Database] Executing (default): PRAGMA INDEX_LIST(`users`)
+================================================================================
+[2026-04-25T17:25:31.598Z] [DEBUG] [Database] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_users_1`)
+================================================================================
+[2026-04-25T17:25:31.601Z] [DEBUG] [Database] Executing (default): PRAGMA foreign_key_list(`users`)
+================================================================================
+[2026-04-25T17:25:31.605Z] [DEBUG] [Database] Executing (default): PRAGMA TABLE_INFO(`users`);
+================================================================================
+[2026-04-25T17:25:31.609Z] [DEBUG] [Database] Executing (default): PRAGMA INDEX_LIST(`users`)
+================================================================================
+[2026-04-25T17:25:31.612Z] [DEBUG] [Database] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_users_1`)
+================================================================================
+[2026-04-25T17:25:31.615Z] [DEBUG] [Database] Executing (default): PRAGMA foreign_key_list(`users`)
+================================================================================
+[2026-04-25T17:25:31.620Z] [DEBUG] [Database] Executing (default): CREATE TABLE IF NOT EXISTS `users_backup` (`id` INTEGER PRIMARY KEY, `name` VARCHAR(255) NOT NULL, `email` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `phone` VARCHAR(20), `role` TEXT DEFAULT 'user', `isActive` TINYINT(1) DEFAULT 1, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL);
+================================================================================
+[2026-04-25T17:25:31.622Z] [DEBUG] [Database] Executing (default): INSERT INTO `users_backup` SELECT `id`, `name`, `email`, `password`, `phone`, `role`, `isActive`, `createdAt`, `updatedAt` FROM `users`;
+================================================================================
+[2026-04-25T17:25:31.625Z] [DEBUG] [Database] Executing (default): DROP TABLE `users`;
+================================================================================
+[2026-04-25T17:25:31.633Z] [DEBUG] [Database] Executing (default): CREATE TABLE IF NOT EXISTS `users` (`id` INTEGER PRIMARY KEY, `name` VARCHAR(255) NOT NULL, `email` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `phone` VARCHAR(20), `role` TEXT DEFAULT 'user', `isActive` TINYINT(1) DEFAULT 1, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL);
+================================================================================
+[2026-04-25T17:25:31.645Z] [DEBUG] [Database] Executing (default): INSERT INTO `users` SELECT `id`, `name`, `email`, `password`, `phone`, `role`, `isActive`, `createdAt`, `updatedAt` FROM `users_backup`;
+================================================================================
+[2026-04-25T17:25:31.647Z] [DEBUG] [Database] Executing (default): DROP TABLE `users_backup`;
+================================================================================
+[2026-04-25T17:25:31.654Z] [DEBUG] [Database] Executing (default): PRAGMA TABLE_INFO(`users`);
+================================================================================
+[2026-04-25T17:25:31.657Z] [DEBUG] [Database] Executing (default): PRAGMA INDEX_LIST(`users`)
+================================================================================
+[2026-04-25T17:25:31.659Z] [DEBUG] [Database] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_users_1`)
+================================================================================
+[2026-04-25T17:25:31.661Z] [DEBUG] [Database] Executing (default): PRAGMA foreign_key_list(`users`)
+================================================================================
+[2026-04-25T17:25:31.663Z] [DEBUG] [Database] Executing (default): CREATE TABLE IF NOT EXISTS `users_backup` (`id` INTEGER PRIMARY KEY, `name` VARCHAR(255) NOT NULL, `email` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `phone` VARCHAR(20), `role` TEXT DEFAULT 'user', `isActive` TINYINT(1) DEFAULT 1, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL);
+================================================================================
+[2026-04-25T17:25:31.669Z] [DEBUG] [Database] Executing (default): INSERT INTO `users_backup` SELECT `id`, `name`, `email`, `password`, `phone`, `role`, `isActive`, `createdAt`, `updatedAt` FROM `users`;
+================================================================================
+[2026-04-25T17:25:31.673Z] [DEBUG] [Database] Executing (default): DROP TABLE `users`;
+================================================================================
+[2026-04-25T17:25:31.679Z] [DEBUG] [Database] Executing (default): CREATE TABLE IF NOT EXISTS `users` (`id` INTEGER PRIMARY KEY, `name` VARCHAR(255) NOT NULL, `email` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `phone` VARCHAR(20), `role` TEXT DEFAULT 'user', `isActive` TINYINT(1) DEFAULT 1, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL);
+================================================================================
+[2026-04-25T17:25:31.685Z] [DEBUG] [Database] Executing (default): INSERT INTO `users` SELECT `id`, `name`, `email`, `password`, `phone`, `role`, `isActive`, `createdAt`, `updatedAt` FROM `users_backup`;
+================================================================================
+[2026-04-25T17:25:31.688Z] [DEBUG] [Database] Executing (default): DROP TABLE `users_backup`;
+================================================================================
+[2026-04-25T17:25:31.694Z] [DEBUG] [Database] Executing (default): PRAGMA TABLE_INFO(`users`);
+================================================================================
+[2026-04-25T17:25:31.697Z] [DEBUG] [Database] Executing (default): PRAGMA INDEX_LIST(`users`)
+================================================================================
+[2026-04-25T17:25:31.698Z] [DEBUG] [Database] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_users_1`)
+================================================================================
+[2026-04-25T17:25:31.700Z] [DEBUG] [Database] Executing (default): PRAGMA foreign_key_list(`users`)
+================================================================================
+[2026-04-25T17:25:31.702Z] [DEBUG] [Database] Executing (default): CREATE TABLE IF NOT EXISTS `users_backup` (`id` INTEGER PRIMARY KEY, `name` VARCHAR(255) NOT NULL, `email` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `phone` VARCHAR(20), `role` TEXT DEFAULT 'user', `isActive` TINYINT(1) DEFAULT 1, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL);
+================================================================================
+[2026-04-25T17:25:31.709Z] [DEBUG] [Database] Executing (default): INSERT INTO `users_backup` SELECT `id`, `name`, `email`, `password`, `phone`, `role`, `isActive`, `createdAt`, `updatedAt` FROM `users`;
+================================================================================
+[2026-04-25T17:25:31.711Z] [DEBUG] [Database] Executing (default): DROP TABLE `users`;
+================================================================================
+[2026-04-25T17:25:31.717Z] [DEBUG] [Database] Executing (default): CREATE TABLE IF NOT EXISTS `users` (`id` INTEGER PRIMARY KEY, `name` VARCHAR(255) NOT NULL, `email` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `phone` VARCHAR(20), `role` TEXT DEFAULT 'user', `isActive` TINYINT(1) DEFAULT 1, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL);
+================================================================================
+[2026-04-25T17:25:31.724Z] [DEBUG] [Database] Executing (default): INSERT INTO `users` SELECT `id`, `name`, `email`, `password`, `phone`, `role`, `isActive`, `createdAt`, `updatedAt` FROM `users_backup`;
+================================================================================
+[2026-04-25T17:25:31.726Z] [DEBUG] [Database] Executing (default): DROP TABLE `users_backup`;
+================================================================================
+[2026-04-25T17:25:31.732Z] [DEBUG] [Database] Executing (default): PRAGMA TABLE_INFO(`users`);
+================================================================================
+[2026-04-25T17:25:31.735Z] [DEBUG] [Database] Executing (default): PRAGMA INDEX_LIST(`users`)
+================================================================================
+[2026-04-25T17:25:31.736Z] [DEBUG] [Database] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_users_1`)
+================================================================================
+[2026-04-25T17:25:31.738Z] [DEBUG] [Database] Executing (default): PRAGMA foreign_key_list(`users`)
+================================================================================
+[2026-04-25T17:25:31.741Z] [DEBUG] [Database] Executing (default): CREATE TABLE IF NOT EXISTS `users_backup` (`id` INTEGER PRIMARY KEY, `name` VARCHAR(255) NOT NULL, `email` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `phone` VARCHAR(20), `role` TEXT DEFAULT 'user', `isActive` TINYINT(1) DEFAULT 1, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL);
+================================================================================
+[2026-04-25T17:25:31.746Z] [DEBUG] [Database] Executing (default): INSERT INTO `users_backup` SELECT `id`, `name`, `email`, `password`, `phone`, `role`, `isActive`, `createdAt`, `updatedAt` FROM `users`;
+================================================================================
+[2026-04-25T17:25:31.749Z] [DEBUG] [Database] Executing (default): DROP TABLE `users`;
+================================================================================
+[2026-04-25T17:25:31.755Z] [DEBUG] [Database] Executing (default): CREATE TABLE IF NOT EXISTS `users` (`id` INTEGER PRIMARY KEY, `name` VARCHAR(255) NOT NULL, `email` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `phone` VARCHAR(20), `role` TEXT DEFAULT 'user', `isActive` TINYINT(1) DEFAULT 1, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL);
+================================================================================
+[2026-04-25T17:25:31.762Z] [DEBUG] [Database] Executing (default): INSERT INTO `users` SELECT `id`, `name`, `email`, `password`, `phone`, `role`, `isActive`, `createdAt`, `updatedAt` FROM `users_backup`;
+================================================================================
+[2026-04-25T17:25:31.764Z] [DEBUG] [Database] Executing (default): DROP TABLE `users_backup`;
+================================================================================
+[2026-04-25T17:25:31.771Z] [DEBUG] [Database] Executing (default): PRAGMA TABLE_INFO(`users`);
+================================================================================
+[2026-04-25T17:25:31.775Z] [DEBUG] [Database] Executing (default): PRAGMA INDEX_LIST(`users`)
+================================================================================
+[2026-04-25T17:25:31.776Z] [DEBUG] [Database] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_users_1`)
+================================================================================
+[2026-04-25T17:25:31.778Z] [DEBUG] [Database] Executing (default): PRAGMA foreign_key_list(`users`)
+================================================================================
+[2026-04-25T17:25:31.781Z] [DEBUG] [Database] Executing (default): CREATE TABLE IF NOT EXISTS `users_backup` (`id` INTEGER PRIMARY KEY, `name` VARCHAR(255) NOT NULL, `email` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `phone` VARCHAR(20), `role` TEXT DEFAULT 'user', `isActive` TINYINT(1) DEFAULT 1, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL);
+================================================================================
+[2026-04-25T17:25:31.789Z] [DEBUG] [Database] Executing (default): INSERT INTO `users_backup` SELECT `id`, `name`, `email`, `password`, `phone`, `role`, `isActive`, `createdAt`, `updatedAt` FROM `users`;
+================================================================================
+[2026-04-25T17:25:31.792Z] [DEBUG] [Database] Executing (default): DROP TABLE `users`;
+================================================================================
+[2026-04-25T17:25:31.800Z] [DEBUG] [Database] Executing (default): CREATE TABLE IF NOT EXISTS `users` (`id` INTEGER PRIMARY KEY, `name` VARCHAR(255) NOT NULL, `email` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `phone` VARCHAR(20), `role` TEXT DEFAULT 'user', `isActive` TINYINT(1) DEFAULT 1, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL);
+================================================================================
+[2026-04-25T17:25:31.807Z] [DEBUG] [Database] Executing (default): INSERT INTO `users` SELECT `id`, `name`, `email`, `password`, `phone`, `role`, `isActive`, `createdAt`, `updatedAt` FROM `users_backup`;
+================================================================================
+[2026-04-25T17:25:31.809Z] [DEBUG] [Database] Executing (default): DROP TABLE `users_backup`;
+================================================================================
+[2026-04-25T17:25:31.816Z] [DEBUG] [Database] Executing (default): PRAGMA TABLE_INFO(`users`);
+================================================================================
+[2026-04-25T17:25:31.818Z] [DEBUG] [Database] Executing (default): PRAGMA INDEX_LIST(`users`)
+================================================================================
+[2026-04-25T17:25:31.820Z] [DEBUG] [Database] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_users_1`)
+================================================================================
+[2026-04-25T17:25:31.823Z] [DEBUG] [Database] Executing (default): PRAGMA foreign_key_list(`users`)
+================================================================================
+[2026-04-25T17:25:31.826Z] [DEBUG] [Database] Executing (default): CREATE TABLE IF NOT EXISTS `users_backup` (`id` INTEGER PRIMARY KEY, `name` VARCHAR(255) NOT NULL, `email` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `phone` VARCHAR(20), `role` TEXT DEFAULT 'user', `isActive` TINYINT(1) DEFAULT 1, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL);
+================================================================================
+[2026-04-25T17:25:31.833Z] [DEBUG] [Database] Executing (default): INSERT INTO `users_backup` SELECT `id`, `name`, `email`, `password`, `phone`, `role`, `isActive`, `createdAt`, `updatedAt` FROM `users`;
+================================================================================
+[2026-04-25T17:25:31.836Z] [DEBUG] [Database] Executing (default): DROP TABLE `users`;
+================================================================================
+[2026-04-25T17:25:31.844Z] [DEBUG] [Database] Executing (default): CREATE TABLE IF NOT EXISTS `users` (`id` INTEGER PRIMARY KEY, `name` VARCHAR(255) NOT NULL, `email` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `phone` VARCHAR(20), `role` TEXT DEFAULT 'user', `isActive` TINYINT(1) DEFAULT 1, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL);
+================================================================================
+[2026-04-25T17:25:31.851Z] [DEBUG] [Database] Executing (default): INSERT INTO `users` SELECT `id`, `name`, `email`, `password`, `phone`, `role`, `isActive`, `createdAt`, `updatedAt` FROM `users_backup`;
+================================================================================
+[2026-04-25T17:25:31.854Z] [DEBUG] [Database] Executing (default): DROP TABLE `users_backup`;
+================================================================================
+[2026-04-25T17:25:31.861Z] [DEBUG] [Database] Executing (default): PRAGMA TABLE_INFO(`users`);
+================================================================================
+[2026-04-25T17:25:31.864Z] [DEBUG] [Database] Executing (default): PRAGMA INDEX_LIST(`users`)
+================================================================================
+[2026-04-25T17:25:31.866Z] [DEBUG] [Database] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_users_1`)
+================================================================================
+[2026-04-25T17:25:31.874Z] [DEBUG] [Database] Executing (default): PRAGMA foreign_key_list(`users`)
+================================================================================
+[2026-04-25T17:25:31.877Z] [DEBUG] [Database] Executing (default): CREATE TABLE IF NOT EXISTS `users_backup` (`id` INTEGER PRIMARY KEY, `name` VARCHAR(255) NOT NULL, `email` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `phone` VARCHAR(20), `role` TEXT DEFAULT 'user', `isActive` TINYINT(1) DEFAULT 1, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL);
+================================================================================
+[2026-04-25T17:25:31.882Z] [DEBUG] [Database] Executing (default): INSERT INTO `users_backup` SELECT `id`, `name`, `email`, `password`, `phone`, `role`, `isActive`, `createdAt`, `updatedAt` FROM `users`;
+================================================================================
+[2026-04-25T17:25:31.885Z] [DEBUG] [Database] Executing (default): DROP TABLE `users`;
+================================================================================
+[2026-04-25T17:25:31.891Z] [DEBUG] [Database] Executing (default): CREATE TABLE IF NOT EXISTS `users` (`id` INTEGER PRIMARY KEY, `name` VARCHAR(255) NOT NULL, `email` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `phone` VARCHAR(20), `role` TEXT DEFAULT 'user', `isActive` TINYINT(1) DEFAULT 1, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL);
+================================================================================
+[2026-04-25T17:25:31.897Z] [DEBUG] [Database] Executing (default): INSERT INTO `users` SELECT `id`, `name`, `email`, `password`, `phone`, `role`, `isActive`, `createdAt`, `updatedAt` FROM `users_backup`;
+================================================================================
+[2026-04-25T17:25:31.898Z] [DEBUG] [Database] Executing (default): DROP TABLE `users_backup`;
+================================================================================
+[2026-04-25T17:25:31.906Z] [DEBUG] [Database] Executing (default): PRAGMA TABLE_INFO(`users`);
+================================================================================
+[2026-04-25T17:25:31.908Z] [DEBUG] [Database] Executing (default): PRAGMA INDEX_LIST(`users`)
+================================================================================
+[2026-04-25T17:25:31.909Z] [DEBUG] [Database] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_users_1`)
+================================================================================
+[2026-04-25T17:25:31.910Z] [DEBUG] [Database] Executing (default): PRAGMA foreign_key_list(`users`)
+================================================================================
+[2026-04-25T17:25:31.912Z] [DEBUG] [Database] Executing (default): CREATE TABLE IF NOT EXISTS `users_backup` (`id` INTEGER PRIMARY KEY, `name` VARCHAR(255) NOT NULL, `email` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `phone` VARCHAR(20), `role` TEXT DEFAULT 'user', `isActive` TINYINT(1) DEFAULT 1, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL);
+================================================================================
+[2026-04-25T17:25:31.916Z] [DEBUG] [Database] Executing (default): INSERT INTO `users_backup` SELECT `id`, `name`, `email`, `password`, `phone`, `role`, `isActive`, `createdAt`, `updatedAt` FROM `users`;
+================================================================================
+[2026-04-25T17:25:31.918Z] [DEBUG] [Database] Executing (default): DROP TABLE `users`;
+================================================================================
+[2026-04-25T17:25:31.923Z] [DEBUG] [Database] Executing (default): CREATE TABLE IF NOT EXISTS `users` (`id` INTEGER PRIMARY KEY, `name` VARCHAR(255) NOT NULL, `email` VARCHAR(255) NOT NULL UNIQUE, `password` VARCHAR(255) NOT NULL, `phone` VARCHAR(20), `role` TEXT DEFAULT 'user', `isActive` TINYINT(1) DEFAULT 1, `createdAt` DATETIME NOT NULL, `updatedAt` DATETIME NOT NULL);
+================================================================================
+[2026-04-25T17:25:31.929Z] [DEBUG] [Database] Executing (default): INSERT INTO `users` SELECT `id`, `name`, `email`, `password`, `phone`, `role`, `isActive`, `createdAt`, `updatedAt` FROM `users_backup`;
+================================================================================
+[2026-04-25T17:25:31.930Z] [DEBUG] [Database] Executing (default): DROP TABLE `users_backup`;
+================================================================================
+[2026-04-25T17:25:31.934Z] [DEBUG] [Database] Executing (default): PRAGMA INDEX_LIST(`users`)
+================================================================================
+[2026-04-25T17:25:31.935Z] [DEBUG] [Database] Executing (default): PRAGMA INDEX_INFO(`sqlite_autoindex_users_1`)
+================================================================================
+[2026-04-25T17:25:31.937Z] [SUCCESS] [Database] Database models synced successfully
+================================================================================
+[2026-04-25T17:25:31.944Z] [SUCCESS] [Server] Server running on http://localhost:5000
+================================================================================
+[2026-04-25T17:25:31.944Z] [INFO] [Server] Environment: development
+================================================================================
+[2026-04-25T17:25:31.945Z] [INFO] [Server] Available endpoints:
+================================================================================
+[2026-04-25T17:25:31.945Z] [INFO] [Server]   - GET  /
+================================================================================
+[2026-04-25T17:25:31.946Z] [INFO] [Server]   - GET  /api/health
+================================================================================
+[2026-04-25T17:25:31.946Z] [INFO] [Server]   - GET  /api/users
+================================================================================
+[2026-04-25T17:25:31.947Z] [INFO] [Server]   - GET  /api/users/:id
+================================================================================
+[2026-04-25T17:25:31.947Z] [INFO] [Server]   - POST /api/users
+================================================================================
+[2026-04-25T17:25:31.948Z] [INFO] [Server]   - PUT  /api/users/:id
+================================================================================
+[2026-04-25T17:25:31.948Z] [INFO] [Server]   - DELETE /api/users/:id
+================================================================================
