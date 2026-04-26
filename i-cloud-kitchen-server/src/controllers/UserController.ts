@@ -6,6 +6,13 @@ export const getAllUsers = async (req: Request, res: Response) => {
     const users = await User.findAll();
     res.json(users);
   } catch (error) {
+    console.error('getAllUsers error', {
+      message: error instanceof Error ? error.message : error,
+      stack: error instanceof Error ? error.stack : undefined,
+      params: req.params,
+      query: req.query,
+      body: req.body,
+    });
     res.status(500).json({ error: 'Failed to fetch users' });
   }
 };
@@ -16,6 +23,13 @@ export const createUser = async (req: Request, res: Response) => {
     const user = await User.create({ name, email, password });
     res.status(201).json(user);
   } catch (error) {
+    console.error('createUser error', {
+      message: error instanceof Error ? error.message : error,
+      stack: error instanceof Error ? error.stack : undefined,
+      params: req.params,
+      query: req.query,
+      body: req.body,
+    });
     res.status(500).json({ error: 'Failed to create user' });
   }
 };
@@ -30,6 +44,13 @@ export const getUserById = async (req: Request, res: Response) => {
       res.status(404).json({ error: 'User not found' });
     }
   } catch (error) {
+    console.error('getUserById error', {
+      message: error instanceof Error ? error.message : error,
+      stack: error instanceof Error ? error.stack : undefined,
+      params: req.params,
+      query: req.query,
+      body: req.body,
+    });
     res.status(500).json({ error: 'Failed to fetch user' });
   }
 };
