@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { href, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { GiForkKnifeSpoon, GiChefToque } from "react-icons/gi";
 import { FiHome, FiBook, FiStar, FiPhone, FiShoppingCart  } from 'react-icons/fi';
-
+import { useCart } from '../../cartContext/CartContext.tsx';
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const {totalItems} = useCart() as { totalItems: number };
 
     const navLinks = [
         { name: 'Home', href: '/', icon: <FiHome /> },
@@ -62,12 +63,36 @@ const Navbar = () => {
                                 </NavLink>
                                 <NavLink to="/cart" className="p-2 md:p-2.0 lg:p-3 text-amber-100 rounded-xl transition-all relative boarder-2 boarder-amber-900/30 hover:hover-amber-600/50 group hover:bg-amber-900/20 hover:shadow-lg hover:shadow-amber-500/30 shadow-md shadow-amber-900/20">
                                     <FiShoppingCart className='text-base md:text-lg lg:text-lg' />
+                                    {totalItems > 0 && (
+                                        <span className='absolute -top-2 -right-2 bg-amber-600 text-amber-100 text-xs w-5 h-5 rounderd-full flex items-center'>
+                                            {totalItems}
+                                        </span>
+                                    )}
                                 </NavLink>  
                             </div>
                         </div>
+
+                        {/* MOBILE MENU */}
+
+                        <div className='md:hidden flex items-center mr-2'>
+                            <button className='text-amber-500 hover:text-amber-300 focus:outline-none transition-all p-2 rounded-xl border-2 boarder-amber-900/30 hover:boarder-amber-600/50 relative shadow-md shadow-amber-900/20 hover:shadow-lg hover:shadow-amber-500/30' onClick={()=>setIsOpen(isOpen)}>
+                                <div className='space-y-2 relative'>
+                                    <span className={`block w-6 h-[2px] bg-current ${isOpen ? 'rotate-45 translate-y-[7px]' : ''}`} />
+                                    
+                                    <span className={`block w-6 h-[2px] bg-current ${isOpen ? 'opacity-0' : ''}`} />
+
+                                    <span className={`block w-6 h-[2px] bg-current ${isOpen ? '-rotate-45 translate-y-[7px]' : ''}`} />
+                                </div>
+                            </button>
+                        </div>
                 </div>  
             </div>
-       
+            {/* MOBILE NAVIGATION */}
+                {   isOpen && (
+                    <div className='md:hidden bg-[#2D1b0b] border-t-2 border-amber-900/30 shadow-amber-900/30 shadow-[0_25px_50px_-12px]'>
+                    </div>)
+
+                }
     </div>
   )
 }
