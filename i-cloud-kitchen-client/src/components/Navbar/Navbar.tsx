@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { href, NavLink } from "react-router-dom";
 import { GiForkKnifeSpoon, GiChefToque } from "react-icons/gi";
-import { FiHome, FiBook, FiStar, FiPhone  } from 'react-icons/fi';
+import { FiHome, FiBook, FiStar, FiPhone, FiShoppingCart  } from 'react-icons/fi';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -55,6 +55,15 @@ const Navbar = () => {
                                     </span>
                                 </NavLink>
                             ))}
+
+                            <div className='flex items-center space-x-2 md:space-x-3 lg:space-x-4 ml-3 md:ml-3 lg:ml-6 mr-2 md:mr-3 lg:mr-4'>
+                                <NavLink to="/login" className="px-3 md:px-3 lg:px-4 py-2 lg:py-3 text-sm md:text-[15px] lg:text-base relative transition-all duration-300 flex items-center hover:bg-amber-900/20 rounded-3xl border-2 border-amber-900/30 hover:border-amber-600/50 shadow-md shadow-amber-900/20">
+                                    <span className="text-amber-500 group-hover:text-amber-300 transition-all">Login</span>
+                                </NavLink>
+                                <NavLink to="/cart" className="p-2 md:p-2.0 lg:p-3 text-amber-100 rounded-xl transition-all relative boarder-2 boarder-amber-900/30 hover:hover-amber-600/50 group hover:bg-amber-900/20 hover:shadow-lg hover:shadow-amber-500/30 shadow-md shadow-amber-900/20">
+                                    <FiShoppingCart className='text-base md:text-lg lg:text-lg' />
+                                </NavLink>  
+                            </div>
                         </div>
                 </div>  
             </div>
