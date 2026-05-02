@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { GiForkKnifeSpoon, GiChefToque } from "react-icons/gi";
 import { FiHome, FiBook, FiStar, FiPhone, FiShoppingCart  } from 'react-icons/fi';
 import { useCart } from '../../cartContext/CartContext.tsx';
 const Navbar = () => {
+    const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
     const {totalItems} = useCart() as { totalItems: number };
+    const [showLogin, setShowLogin] = useState(false);
 
     const navLinks = [
         { name: 'Home', href: '/', icon: <FiHome /> },
@@ -31,7 +33,7 @@ const Navbar = () => {
                     <div className="flex-shrink-0 flex items-center space-x-2 group relative md:translate-x-4 lg:translate-x-6 ml-0 md:ml-2">
                         <div className="absolute -inset-4 bg-amber-500/10 rounded-full blur-xl opacity-0 group-hover/nav:opacity-100 transition-opacity duration-300" />
                             
-                            <GiChefToque className="text-3xl md:text-4xl lg:text-5xl text-amber-500 transition-all group-hover:rotate-12 group-hover: text-amber-400 hover:drop-shadow[0_0_15px] hover:drop-shadow-500/50 " />
+                            <GiChefToque className="text-2xl md:text-4xl lg:text-5xl text-amber-500 transition-all group-hover:rotate-12 group-hover: text-amber-400 hover:drop-shadow[0_0_15px] hover:drop-shadow-500/50 " />
                             
                             <div className="flex flex-col relative ml-2 max-w-[140px] md:max-w-[160px] lg:max-w-none">
                                 <NavLink to="/" className="text-2xl md:text-xl lg:text-4xl bg-gradient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent font-monsieur tracking-wider drop-shadow-[0_2px_2px] drop-shadow-black -translate-x-2 truncate md:truncate-none" >
@@ -48,7 +50,7 @@ const Navbar = () => {
                                 <NavLink 
                                 key={link.name} 
                                 to={link.href} 
-                                className={({ isActive }) => `group px-3 md:px-3 lg:px-4 py-2 lg:py-3 text-sm md:text-[15px] lg:text-base relative transition-all duration-300 flex items-center hover:bg-amber-900/20 rounded-3xl border-2 ${isActive ? 'border-amber-600/50 bg-amber-900/20 shadow-[inset_0_0_15px] shadow-amber-500/20' : 'boarder-amber-900/30 hover:border-amber-600/50'} shadow-md shadow-amber-900/20`}>
+                                className={({ isActive }) => `group px-3 md:px-3 lg:px-4 py-2 lg:py-3 text-sm md:text-[15px] lg:text-base relative transition-all duration-300 flex items-center hover:bg-amber-900/20 rounded-3xl border-2 ${isActive ? 'border-amber-600/50 bg-amber-900/20 shadow-[inset_0_0_15px] shadow-amber-500/20' : 'border-amber-900/30 hover:border-amber-600/50'} shadow-md shadow-amber-900/20`}>
                                     <span className="mr-2 text-sm md:text-[15px] lg:text-base text-amber-500 group:hover:text-amber-300 transition-all">{link.icon}
                                     </span>
                                     <span className="text-amber-100 group:hover:text-amber-300 relative">{link.name}
@@ -61,10 +63,10 @@ const Navbar = () => {
                                 <NavLink to="/login" className="px-3 md:px-3 lg:px-4 py-2 lg:py-3 text-sm md:text-[15px] lg:text-base relative transition-all duration-300 flex items-center hover:bg-amber-900/20 rounded-3xl border-2 border-amber-900/30 hover:border-amber-600/50 shadow-md shadow-amber-900/20">
                                     <span className="text-amber-500 group-hover:text-amber-300 transition-all">Login</span>
                                 </NavLink>
-                                <NavLink to="/cart" className="p-2 md:p-2.0 lg:p-3 text-amber-100 rounded-xl transition-all relative boarder-2 boarder-amber-900/30 hover:hover-amber-600/50 group hover:bg-amber-900/20 hover:shadow-lg hover:shadow-amber-500/30 shadow-md shadow-amber-900/20">
+                                <NavLink to="/cart" className="p-2 md:p-2.0 lg:p-3 text-amber-100 rounded-xl transition-all relative border-2 border-amber-900/30 hover:hover-amber-600/50 group hover:bg-amber-900/20 hover:shadow-lg hover:shadow-amber-500/30 shadow-md shadow-amber-900/20">
                                     <FiShoppingCart className='text-base md:text-lg lg:text-lg' />
                                     {totalItems > 0 && (
-                                        <span className='absolute -top-2 -right-2 bg-amber-600 text-amber-100 text-xs w-5 h-5 rounderd-full flex items-center'>
+                                        <span className='absolute -top-2 -right-2 bg-amber-600 text-amber-100 text-xs w-5 h-5 rounderd-full flex items-cente justify-centerr'>
                                             {totalItems}
                                         </span>
                                     )}
@@ -75,13 +77,13 @@ const Navbar = () => {
                         {/* MOBILE MENU */}
 
                         <div className='md:hidden flex items-center mr-2'>
-                            <button className='text-amber-500 hover:text-amber-300 focus:outline-none transition-all p-2 rounded-xl border-2 boarder-amber-900/30 hover:boarder-amber-600/50 relative shadow-md shadow-amber-900/20 hover:shadow-lg hover:shadow-amber-500/30' onClick={()=>setIsOpen(isOpen)}>
+                            <button className='text-amber-500 hover:text-amber-300 focus:outline-none transition-all p-2 rounded-xl border-2 border-amber-900/30 hover:border-amber-600/50 relative shadow-md shadow-amber-900/20 hover:shadow-lg hover:shadow-amber-500/30' onClick={()=>setIsOpen(!isOpen)}>
                                 <div className='space-y-2 relative'>
-                                    <span className={`block w-6 h-[2px] bg-current ${isOpen ? 'rotate-45 translate-y-[7px]' : ''}`} />
+                                    <span className={`block w-6 h-[2px] bg-current transition-all ${isOpen ? 'rotate-45 translate-y-[2px]' : ''}`} />
                                     
                                     <span className={`block w-6 h-[2px] bg-current ${isOpen ? 'opacity-0' : ''}`} />
 
-                                    <span className={`block w-6 h-[2px] bg-current ${isOpen ? '-rotate-45 translate-y-[7px]' : ''}`} />
+                                    <span className={`block w-6 h-[2px] bg-current transition-all ${isOpen ? '-rotate-45 translate-y-[2px]' : ''}`} />
                                 </div>
                             </button>
                         </div>
@@ -89,10 +91,48 @@ const Navbar = () => {
             </div>
             {/* MOBILE NAVIGATION */}
                 {   isOpen && (
-                    <div className='md:hidden bg-[#2D1b0b] border-t-2 border-amber-900/30 shadow-amber-900/30 shadow-[0_25px_50px_-12px]'>
-                    </div>)
+                    <div className='md:hidden bg-[#2D1B0E] border-t-4 border-amber-900/40 relative shadow-lg shadow-amber-900/30 w-full'>
+                        <div className="px-4 py-2 space-y-2">
+                            {navLinks.map((link:any) => (
+                                <NavLink 
+                                key={link.name} 
+                                to={link.to}
+                                onClick={()=>setIsOpen(false)}
+                                className={({isActive})=>`block px-4 py-3 text-sm rounded-xl transition-all items-center ${isActive ? 'border-amber-600/50':'border-amber-900/50'}`}>
+                                    <span className='mr-3 text-amber-500'>{link.icon}</span>
+                                {link.name}
+                            </NavLink>
+                            ))}
 
+                            <div className='p-4 border-t-2 border-amber-900/30 space-y-2'>
+                                <NavLink to="/cart" onClick={()=>setIsOpen(false)} className="w-full px-4 py-3 text-center text-amber -100 rounded-xl border-2 border-amber-900/30 hover:border-amber-600/50 flex items-center justify-center space-x-2 text-sm">
+                                    <FiShoppingCart className='text-lg' />
+                                     {totalItems > 0 && (
+                                        <span className='top-2 right-2 bg-amber-600 text-amber-100 text-xs w-5 h-5 rounderd-full flex items-center justify-center'>
+                                            {totalItems}
+                                        </span>
+                                    )}
+                                </NavLink>
+                            </div>
+                        </div>
+                    </div>)
                 }
+
+                
+                 {/* LOGIN MODULE */}
+                 {showLogin && (
+                    <div className='fixed inset-0 bg-black/60 flex items-center justify-center z-50 p-4'>
+                        <div className='bg-gradient-to-br free-[#2D180E] to-[#4a372a] rounded-xl p-6 w-full max-w max-w-[480px] relative border-4 border-amber-700/30 shadow-[0_0_30px] shadow-amber-500/30'>
+                            <button onClick={()=> navigate('/')} className='absolute top-2 right-2 text-amber-500 hover:text-amber-300 text-2xl'>
+                                &tiems;
+                            </button>
+                            <h2 className='text-2xl font-bold bg-gratient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent mb-4 text-center'>
+                                I cloud Kitchen Login
+                            </h2>
+                        </div>
+                    </div>
+                    )}
+
     </div>
   )
 }
