@@ -1,13 +1,32 @@
-import { useState } from 'react';
-import { NavLink, useNavigate } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { GiForkKnifeSpoon, GiChefToque } from "react-icons/gi";
 import { FiHome, FiBook, FiStar, FiPhone, FiShoppingCart  } from 'react-icons/fi';
 import { useCart } from '../../cartContext/CartContext.tsx';
+import Login from '../Login/Login.tsx'; 
 const Navbar = () => {
     const navigate = useNavigate();
+    const location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
     const {totalItems} = useCart() as { totalItems: number };
     const [showLogin, setShowLogin] = useState(false);
+
+    // COMBINE LOGIN MODULE WITH AUTH STATUS ON LOCATION CHANGE
+
+    const [isAuthenticated, setIsAuthenticated] = useState(
+        Boolean(localStorage.getItem('authToken'))
+    );
+
+    useEffect(() => {
+        setShowLogin(location.pathname === '/login');
+        setIsAuthenticated(Boolean(localStorage.getItem('loginData')));
+    },[location.pathname])
+
+    const haneleLoginSuccess = () => {
+        localStorage.setItem('loginData', JSON.stringify({ loggedIn: true }));
+        setIsAuthenticated(true);
+        navigate('/');
+    }
 
     const navLinks = [
         { name: 'Home', href: '/', icon: <FiHome /> },
@@ -129,6 +148,10 @@ const Navbar = () => {
                             <h2 className='text-2xl font-bold bg-gratient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent mb-4 text-center'>
                                 I cloud Kitchen Login
                             </h2>
+                            {/* <Login 
+                                onLoginSuccess={haneleLoginSuccess} 
+                                onClose={()=> navigate('/')}
+                            /> */}
                         </div>
                     </div>
                     )}
