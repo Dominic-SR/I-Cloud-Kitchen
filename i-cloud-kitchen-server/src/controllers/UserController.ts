@@ -1,12 +1,13 @@
 import { Request, Response } from 'express';
 import User from '../models/User';
+import { fileLogger } from '../utils/fileLogger';
 
 export const getAllUsers = async (req: Request, res: Response) => {
   try {
     const users = await User.findAll();
     res.json(users);
   } catch (error) {
-    console.error('getAllUsers error', {
+    fileLogger.error('getAllUsers error', {
       message: error instanceof Error ? error.message : error,
       stack: error instanceof Error ? error.stack : undefined,
       params: req.params,
@@ -23,7 +24,7 @@ export const createUser = async (req: Request, res: Response) => {
     const user = await User.create({ name, email, password });
     res.status(201).json(user);
   } catch (error) {
-    console.error('createUser error', {
+    fileLogger.error('createUser error', {
       message: error instanceof Error ? error.message : error,
       stack: error instanceof Error ? error.stack : undefined,
       params: req.params,
@@ -44,7 +45,7 @@ export const getUserById = async (req: Request, res: Response) => {
       res.status(404).json({ error: 'User not found' });
     }
   } catch (error) {
-    console.error('getUserById error', {
+    fileLogger.error('getUserById error', {
       message: error instanceof Error ? error.message : error,
       stack: error instanceof Error ? error.stack : undefined,
       params: req.params,

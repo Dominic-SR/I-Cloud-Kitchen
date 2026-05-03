@@ -5,6 +5,7 @@ import sequelize, { createDatabaseIfNotExists } from './config/database';
 import apiRoutes from './routes/api';
 import { apiLogger } from './middleware/logger';
 import { errorHandler } from './middleware/errorHandler';
+import { fileLogger } from './utils/fileLogger';
 import './models/User';
 
 dotenv.config();
@@ -27,17 +28,17 @@ app.use(errorHandler);
 createDatabaseIfNotExists()
   .then(() => sequelize.authenticate())
   .then(() => {
-    console.log('Database connected successfully.');
+    fileLogger.success('Database connected successfully.');
     return sequelize.sync();
   })
   .then(() => {
-    console.log('Database synced successfully.');
+    fileLogger.success('Database synced successfully.');
   })
   .catch((err) => {
-    console.error('Unable to connect to the database:', err);
+    fileLogger.error('Unable to connect to the database:', err);
   });
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+  fileLogger.success(`Server is running on port ${PORT}`);
 });
