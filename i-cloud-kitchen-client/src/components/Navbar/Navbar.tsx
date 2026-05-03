@@ -28,6 +28,17 @@ const Navbar = () => {
         navigate('/');
     }
 
+    const handleLogout = () => {
+        localStorage.removeItem('loginData');
+        setIsAuthenticated(false);
+        navigate('/');
+    }
+
+    // EXTRACT DESKTOP AUTH BUTTON
+    const renderDesktopAuthButton = () => { 
+        return isAuthenticated
+    } 
+
     const navLinks = [
         { name: 'Home', href: '/', icon: <FiHome /> },
         { name: 'Menu', href: '/menu', icon: <FiBook /> },
@@ -148,10 +159,10 @@ const Navbar = () => {
                             <h2 className='text-2xl font-bold bg-gratient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent mb-4 text-center'>
                                 I cloud Kitchen Login
                             </h2>
-                            {/* <Login 
+                            <Login 
                                 onLoginSuccess={haneleLoginSuccess} 
                                 onClose={()=> navigate('/')}
-                            /> */}
+                            />
                         </div>
                     </div>
                     )}
