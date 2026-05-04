@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { GiForkKnifeSpoon, GiChefToque } from "react-icons/gi";
-import { FiHome, FiBook, FiStar, FiPhone, FiShoppingCart  } from 'react-icons/fi';
+import { FiHome, FiBook, FiStar, FiPhone, FiShoppingCart, FiLogOut, FiKey  } from 'react-icons/fi';
 import { useCart } from '../../cartContext/CartContext.tsx';
 import Login from '../Login/Login.tsx'; 
 const Navbar = () => {
@@ -36,8 +36,35 @@ const Navbar = () => {
 
     // EXTRACT DESKTOP AUTH BUTTON
     const renderDesktopAuthButton = () => { 
-        return isAuthenticated
+        return isAuthenticated ? (
+            <button onClick={handleLogout} className='px-3 md:px-3 lg:px-6 py-1.5 md:py-2 lg:py-3 bg-gradient-to-br from-amber-500 to-amber-700 text-[#2D1B0E] rounded-2xl font-bold hover:shadow-lg hover:shadow-amber-600/40 transition-all transform hover:scale-[1.02] border-2 border-amber-600/20 flex items-center space-x-2 shadow-md shadow-amber-900/20 text-xs md:text-sm lg:text-lg'>
+                <FiLogOut className='text-base md:text-lg lg:text-lg'/>
+                <span className='text-shadow'>Logout</span> 
+            </button>
+        ):(
+            <button onClick={()=>navigate('/')} className='px-3 md:px-3 lg:px-6 py-1.5 md:py-2 lg:py-3 bg-gradient-to-br from-amber-500 to-amber-700 text-[#2D1B0E] rounded-2xl font-bold hover:shadow-lg hover:shadow-amber-600/40 transition-all transform hover:scale-[1.02] border-2 border-amber-600/20 flex items-center space-x-2 shadow-md shadow-amber-900/20 text-xs md:text-sm lg:text-lg'>
+                <FiKey className='text-base md:text-lg lg:text-lg'/>
+                <span className='text-shadow'>Login</span>
+            </button>
+        )
     } 
+
+    // EXTRACT MOBILE AUTH BUTTON
+    const renderMobileAuthButton = () => {
+        return isAuthenticated ? (
+            <button onClick={handleLogout} className='w-full px-4 py-3 bg-gradient-to-br from-amber-500 to-amber-700 text-[#2D1B0E] rounded-xl font-semibold hover:shadow-lg hover:shadow-amber-600/40 transition-all transform hover:scale-[1.02] border-2 border-amber-600/20 flex items-center justify-center space-x-2 text-sm'>
+                <FiLogOut className='text-lg'/>
+                <span>Logout</span> 
+            </button>):(
+            <button onClick={handleLogout} className='w-full px-4 py-3 bg-gradient-to-br from-amber-500 to-amber-700 text-[#2D1B0E] rounded-xl font-semibold hover:shadow-lg hover:shadow-amber-600/40 transition-all transform hover:scale-[1.02] border-2 border-amber-600/20 flex items-center justify-center space-x-2 text-sm'>
+                <FiKey/>
+                <span>Login</span> 
+            </button>
+           )
+        }
+            
+            
+
 
     const navLinks = [
         { name: 'Home', href: '/', icon: <FiHome /> },
@@ -159,10 +186,10 @@ const Navbar = () => {
                             <h2 className='text-2xl font-bold bg-gratient-to-r from-amber-400 to-amber-600 bg-clip-text text-transparent mb-4 text-center'>
                                 I cloud Kitchen Login
                             </h2>
-                            <Login 
+                            {/* <Login 
                                 onLoginSuccess={haneleLoginSuccess} 
                                 onClose={()=> navigate('/')}
-                            />
+                            /> */}
                         </div>
                     </div>
                     )}
