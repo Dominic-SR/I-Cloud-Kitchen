@@ -56,7 +56,10 @@ const Navbar = () => {
                 <FiLogOut className='text-lg'/>
                 <span>Logout</span> 
             </button>):(
-            <button onClick={handleLogout} className='w-full px-4 py-3 bg-gradient-to-br from-amber-500 to-amber-700 text-[#2D1B0E] rounded-xl font-semibold hover:shadow-lg hover:shadow-amber-600/40 transition-all transform hover:scale-[1.02] border-2 border-amber-600/20 flex items-center justify-center space-x-2 text-sm'>
+            <button onClick={()=>{
+                navigate('/login')
+                setIsOpen(false)
+            }} className='w-full px-4 py-3 bg-gradient-to-br from-amber-500 to-amber-700 text-[#2D1B0E] rounded-xl font-semibold hover:shadow-lg hover:shadow-amber-600/40 transition-all transform hover:scale-[1.02] border-2 border-amber-600/20 flex items-center justify-center space-x-2 text-sm'>
                 <FiKey/>
                 <span>Login</span> 
             </button>
