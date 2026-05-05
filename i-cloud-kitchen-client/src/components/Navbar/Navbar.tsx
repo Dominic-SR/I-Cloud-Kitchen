@@ -131,6 +131,7 @@ const Navbar = () => {
                                         </span>
                                     )}
                                 </NavLink>  
+                                {renderDesktopAuthButton()}
                             </div>
                         </div>
 
@@ -173,6 +174,7 @@ const Navbar = () => {
                                         </span>
                                     )}
                                 </NavLink>
+                                    {renderMobileAuthButton()}
                             </div>
                         </div>
                     </div>)
