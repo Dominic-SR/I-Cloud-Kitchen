@@ -11,6 +11,10 @@ const Banner = () => {
                     <p className='text-lg md:text-lg lg:text-xl font-playfair italic sm:text-xl text-amber-100 mx-w-xl opacity-90 mx-auto md:mx-0'>
                         Best cook and best delivery guys all at your service. Hot tasty food will reach you in 60 minutes.
                     </p>
+
+                    <form onSubmit={handleSearch} className='relative max-w-2xl mx-auto md:mx-0 group'>
+                        
+                    </form>
                 </div>
                 {/* RIGHT CONTENT */}
                 {/* <div className='flex-1 flex justify-center'>
