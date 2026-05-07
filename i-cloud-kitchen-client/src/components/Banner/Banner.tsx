@@ -1,4 +1,5 @@
 import React from 'react'
+import { FaSearch } from 'react-icons/fa'
 
 const Banner = () => {
   return (
@@ -13,7 +14,12 @@ const Banner = () => {
                     </p>
 
                     <form onSubmit={handleSearch} className='relative max-w-2xl mx-auto md:mx-0 group'>
-                        
+                        <div className='relative flex items-center bg-amber-900/30 rounded-xl border-2 border-amber-500 shadow-2xl hover:bg-amber-400/50 transition-all duration-100' >
+                            <div className="pl-6 pr-3 py-4">
+                                <FaSearch className='text-amber-400/80 text-xl' />
+                            </div>
+                            <input type='text'/>
+                        </div>
                     </form>
                 </div>
                 {/* RIGHT CONTENT */}
