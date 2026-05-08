@@ -6,8 +6,7 @@ const Banner = () => {
 
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault() ;
-        console.log("ddddd");
-        
+        console.log("Search");
     }
   return (
     <div className='relative'>
