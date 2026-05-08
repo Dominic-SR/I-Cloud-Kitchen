@@ -2,6 +2,13 @@ import React from 'react'
 import { FaSearch } from 'react-icons/fa'
 
 const Banner = () => {
+    const [searchQuery, setSearchQuery] = React.useState('')
+
+    const handleSearch = (e: React.FormEvent) => {
+        e.preventDefault() ;
+        console.log("ddddd");
+        
+    }
   return (
     <div className='relative'>
         <div className='bg-gradient-to-br from-amber-900 via-amber-800 to-amber-700 text-white py-16 px-4 sm:px-8 relative overflow-hidden'>
@@ -18,7 +25,9 @@ const Banner = () => {
                             <div className="pl-6 pr-3 py-4">
                                 <FaSearch className='text-amber-400/80 text-xl' />
                             </div>
-                            <input type='text'/>
+                            <input type='text' value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder='Discover your next favourite meal' 
+                            className='w-full py-4 pr-6 bg-transparent outline-none placeholder-amber-200/70 text-lg font-medium tracking-wide' />
+
                         </div>
                     </form>
                 </div>
