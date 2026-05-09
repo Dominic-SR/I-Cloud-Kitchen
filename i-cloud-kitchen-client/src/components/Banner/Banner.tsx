@@ -27,7 +27,7 @@ const Banner = () => {
                             </div>
                             <input type='text' value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder='Discover your next favourite meal' 
                             className='w-full py-4 pr-6 bg-transparent outline-none placeholder-amber-200/70 text-lg font-medium tracking-wide' />
-                            <button type='submit' className='m-4 px-6 py-3 bg-gradient-to-r from-amber-400 to-amber300/20'>Search</button>
+                            <button type='submit' className='m-4 px-6 py-3 bg-gradient-to-r from-amber-400 to-amber300/20 rounded-lg font-semibold text-amber-900 Hover:from-amber-300 Hover:to-amber-200 transition-all duration-300 shadow-lg hover:shadow-amber-300/20'>Search</button>
 
                         </div>
                     </form>
@@ -45,9 +45,11 @@ const Banner = () => {
                     </div>
                 </div>  
                 {/* RIGHT IMAGE CONTENT */}
-                {/* <div className='flex-1 flex justify-center'>
-                    <img src="/path/to/image.jpg" alt="Delicious Food" className='rounded-full border-4 border-white shadow-lg' />
-                </div> */}
+                <div className='flex-1 flex group mt-8 md:mt-0 min-h-[300px] sm:min-h-[400px]'>
+                    <div className='relative rounded-full p-1 bg-gradient-to-br from-amber-700 via-amber-800 to-amber-300 shadow-2xl z-20 w-[250px] xs:w-[300px] sm:w-[350px] h-[250px] xs:h-[300px] sm:h-[350px] mx-auto'>
+                        <img src="" alt="Food Delivery" className='rounded-full border-4 xs:border-8 border-amber-900/50 w-full h-full object-cover object-top' />
+                    </div>    
+                </div>
             </div>
         </div>
     </div>
