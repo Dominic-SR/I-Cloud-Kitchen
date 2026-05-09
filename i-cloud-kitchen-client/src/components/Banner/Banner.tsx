@@ -1,8 +1,9 @@
 import React from 'react'
-import { FaSearch } from 'react-icons/fa'
+import { FaDownload, FaPlay, FaSearch } from 'react-icons/fa'
 
 const Banner = () => {
     const [searchQuery, setSearchQuery] = React.useState('')
+    const [showVideos, setShowVideos] = React.useState(false)
 
     const handleSearch = (e: React.FormEvent) => {
         e.preventDefault() ;
@@ -26,11 +27,24 @@ const Banner = () => {
                             </div>
                             <input type='text' value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder='Discover your next favourite meal' 
                             className='w-full py-4 pr-6 bg-transparent outline-none placeholder-amber-200/70 text-lg font-medium tracking-wide' />
+                            <button type='submit' className='m-4 px-6 py-3 bg-gradient-to-r from-amber-400 to-amber300/20'>Search</button>
 
                         </div>
                     </form>
-                </div>
-                {/* RIGHT CONTENT */}
+                    <div className="flex flex-wrap gap-4 justify-center md:justify-start mt-6">
+                        <button className='group flex items-center gap-3 bg-amber-800/30 hover:bg-amber-800/50 px-6 py-3 rounded-xl transition-all duration-300 border-2 border-amber-700/50 hover:border-amber-400 backdrop-blur-sm '>
+                            <FaDownload className='text-xl text-amber-400 group-hover:animate-bounce' />
+                            <span className='text-lg'>Download App</span>
+                        </button>
+
+                        <button onClick={()=>setShowVideos(true)} className='group flex items-center gap-3 bg-gradient-to-r from-amber-400 to-amber-300 hover:from-amber-300 hover:to-amber-200 px-6 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-amber-300/30'>
+                            <FaPlay className='text-xl text-amber-900' />
+                            <span className='text-lg text-amber-900 font-semibold'>Watch Videos</span>
+
+                        </button>
+                    </div>
+                </div>  
+                {/* RIGHT IMAGE CONTENT */}
                 {/* <div className='flex-1 flex justify-center'>
                     <img src="/path/to/image.jpg" alt="Delicious Food" className='rounded-full border-4 border-white shadow-lg' />
                 </div> */}
